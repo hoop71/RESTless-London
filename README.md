@@ -9,8 +9,14 @@ tl;dr: The N+1 problem occurs when the server executes more round trips to the d
 ### Database Structure:
 
 ### Dataloader: 
+  > DataLoader is a generic utility to be used as part of your application's data fetching layer to provide a simplified and consistent API over various remote data sources such as databases or web services via batching and caching.
+
+  > [Dataloader Package](https://www.npmjs.com/package/dataloader)
 
 ### SQL: 
+
+### Tools: 
+  
 
 
 ## Repo Setup
