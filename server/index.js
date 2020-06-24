@@ -14,14 +14,18 @@ const typeDefs = gql`
 	}
 
 	type Query {
-		solarSystems: [SolarSystem]
+		getAllSolarSystems: [SolarSystem]
 	}
 `
 
 const resolvers = {
 	Query: {
-		solarSystems: async () => {
-			return []
+		getAllSolarSystems: async (parent, args, { models }) => await models.SolarSystems.findAll(),
+	},
+	SolarSystem: {
+		planets: async (parent, args, { models }) => {
+			const planets = await models.Planets.findAll({ where: { solarSystemId: parent.id } })
+			return planets
 		},
 	},
 }
