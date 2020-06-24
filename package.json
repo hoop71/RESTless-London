@@ -1,0 +1,29 @@
+{
+	"name": "restless_london",
+	"version": "0.1.0",
+	"description": "Addressing N+1 with GraphQL",
+	"main": "index.js",
+	"author": "Matt Hooper",
+	"license": "MIT",
+	"scripts": {
+		"start": "nodemon --exec babel-node index.js"
+	},
+	"dependencies": {
+		"apollo-server": "^2.14.2",
+		"graphql": "^15.0.0",
+		"lodash": "^4.17.15",
+		"sequelize": "^5.21.12",
+		"sequelize-cli": "^5.5.1",
+		"sqlite3": "^4.2.0"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.10.2",
+		"@babel/node": "^7.10.1",
+		"@babel/preset-env": "^7.10.2",
+		"babel-eslint": "^10.1.0",
+		"eslint": "^7.1.0",
+		"faker": "^4.1.0",
+		"nodemon": "^2.0.4",
+		"prettier": "^2.0.5"
+	}
+}
