@@ -6,7 +6,8 @@
 	"author": "Matt Hooper",
 	"license": "MIT",
 	"scripts": {
-		"start": "nodemon --exec babel-node index.js"
+		"start": "nodemon --exec babel-node index.js basic",
+		"dataloader": "nodemon --exec babel-node index.js dataloader"
 	},
 	"dependencies": {
 		"apollo-server": "^2.14.2",

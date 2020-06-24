@@ -7,7 +7,6 @@ module.exports = {
 			require.resolve('babel-plugin-module-resolver'),
 			{
 				root: [path.resolve('./')],
-				// alias: aliases,
 			},
 		],
 	],
