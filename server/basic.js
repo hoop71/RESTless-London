@@ -1,6 +1,10 @@
+// Server
 import { ApolloServer, gql } from 'apollo-server'
+
+// DB
 import models from 'db/models'
 
+// TypeDefs
 const typeDefs = gql`
 	type Planet {
 		id: ID!
@@ -17,7 +21,7 @@ const typeDefs = gql`
 		getAllSolarSystems: [SolarSystem]
 	}
 `
-
+// Resolvers
 const resolvers = {
 	Query: {
 		getAllSolarSystems: async (parent, args, { models }) => await models.SolarSystems.findAll(),
@@ -29,12 +33,14 @@ const resolvers = {
 	},
 }
 
+// Server
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
 	context: { models },
 })
 
+// Sync DB
 models.sequelize.sync()
 
 export default server

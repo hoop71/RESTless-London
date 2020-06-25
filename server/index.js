@@ -1,10 +1,24 @@
-import _ from 'lodash'
-const serverType = _.last(process.argv)
-import server from './basic'
-import dataloader from './dataLoader'
+// Servers
+import server from 'server/basic'
+import dataloader from 'server/dataloader'
+import join from 'server/join'
 
-if (serverType === 'dataloader') {
-	module.exports = dataloader
-} else {
-	module.exports = server
+// Args
+const serverType = _.last(process.argv)
+
+// Hacky way to export the appropriate server :|
+export const exportServer = () => {
+	switch (serverType) {
+		case 'dataloader':
+			module.exports = dataloader
+			break
+		case 'join':
+			module.exports = join
+			break
+		case 'basic':
+			module.exports = server
+			break
+	}
 }
+
+exportServer()

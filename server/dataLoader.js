@@ -1,8 +1,14 @@
+// Server
 import { ApolloServer, gql } from 'apollo-server'
-import models from 'db/models'
-import DataLoader from 'dataloader'
-import _ from 'lodash'
 
+// DB
+import models from 'db/models'
+
+// Utils
+import _ from 'lodash'
+import DataLoader from 'dataloader'
+
+// TypeDefs
 const typeDefs = gql`
 	type Planet {
 		id: ID!
@@ -20,7 +26,7 @@ const typeDefs = gql`
 		getAllPlanetsByIds: [Planet]
 	}
 `
-
+// Resolvers
 const resolvers = {
 	Query: {
 		getAllSolarSystems: async (parent, args, { models }) => await models.SolarSystems.findAll(),
@@ -35,32 +41,29 @@ const resolvers = {
 	},
 }
 
+// Server
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
 	context: () => {
 		return {
 			planetsLoader: new DataLoader(async (keys) => {
+				// Load all planets that has a cooresponding solarSystemId
 				const planets = await models.Planets.findAll({ where: { solarSystemId: keys } })
 
+				// Create a map to ogranize them by solarSystemId
 				const planetMap = {}
 				planets.forEach(({ dataValues: planetData }) => {
-					if (planetMap[planetData.solarSystemId]) {
-						planetMap[planetData.solarSystemId] = planetMap[planetData.solarSystemId].concat(planetData)
-					} else {
-						planetMap[planetData.solarSystemId] = [planetData]
-					}
+					// If the key exists, concat, otherwise, make an array with planetData
+					_.set(planetMap, planetData.solarSystemId, _.get(planetMap, planetData.solarSystemId, []).concat(planetData))
 				})
 				return keys.map((key) => planetMap[key])
 
 				// Alternate method with reduce, only one loop over the data but harder to quickly reason about
 				// return _.compact(
 				// 	planets.reduce((acc, { dataValues: planetData }) => {
-				// 		if (acc[planetData.solarSystemId]) {
-				// 			acc[planetData.solarSystemId] = acc[planetData.solarSystemId].concat(planetData)
-				// 		} else {
-				// 			acc[planetData.solarSystemId] = [planetData]
-				// 		}
+				// If the key exists, concat, otherwise, make an array with planetData
+				// 		_.set(acc, planetData.solarSystemId, _.get(acc, planetData.solarSystemId, []).concat(planetData))
 				// 		return acc
 				// 	}, [])
 				// )
@@ -70,6 +73,7 @@ const server = new ApolloServer({
 	},
 })
 
+// Sync DB
 models.sequelize.sync()
 
 export default server

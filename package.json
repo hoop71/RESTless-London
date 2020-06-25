@@ -7,7 +7,8 @@
 	"license": "MIT",
 	"scripts": {
 		"start": "nodemon --exec babel-node index.js basic",
-		"dataloader": "nodemon --exec babel-node index.js dataloader"
+		"dataloader": "nodemon --exec babel-node index.js dataloader",
+		"join": "nodemon --exec babel-node index.js join"
 	},
 	"dependencies": {
 		"apollo-server": "^2.14.2",

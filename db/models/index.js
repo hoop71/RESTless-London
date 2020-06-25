@@ -1,7 +1,10 @@
+// DB
 import Sequelize from 'sequelize'
+const db_name = 'restless'
+
+// Utils
 import chalk from 'chalk'
 
-const db_name = 'restless'
 const sequelize = new Sequelize(db_name, null, null, {
 	storage: 'db/restless.sqlite3',
 	dialect: 'sqlite',
