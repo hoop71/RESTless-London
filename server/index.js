@@ -3,6 +3,9 @@ import server from 'server/basic'
 import dataloader from 'server/dataloader'
 import join from 'server/join'
 
+// Utils
+import _ from 'lodash'
+
 // Args
 const serverType = _.last(process.argv)
 
