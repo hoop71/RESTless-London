@@ -1,4 +1,4 @@
-# RESTLESS London - July 16, 2020
+# RESTless London - July 16, 2020
 
 ## GraphQL N+1 Problem
 
