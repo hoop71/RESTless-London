@@ -24,7 +24,7 @@ const typeDefs = gql`
 // Resolvers
 const resolvers = {
 	Query: {
-		getAllSolarSystems: async (parent, args, { models }) => await models.SolarSystems.findAll(),
+		getAllSolarSystems: async (parent, args, { models }) => await models.SolarSystems.findAll({ limit: 10 }),
 	},
 	SolarSystem: {
 		planets: async (parent, args, { models }) => {

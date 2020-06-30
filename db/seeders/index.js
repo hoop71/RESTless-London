@@ -3,7 +3,7 @@
 const faker = require('faker')
 const _ = require('lodash')
 
-const NUMBER_OF_SOLAR_SYSTEMS = 5
+const NUMBER_OF_SOLAR_SYSTEMS = 10
 
 const makePlanets = (solarSystemId) =>
 	_.times(_.random(1, 10), () => ({
