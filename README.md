@@ -4,13 +4,39 @@
 
 tl;dr: The N+1 problem occurs when the server executes more round trips to the datastore for related or nested data than necessary resulting in inefficiencies and longer load times.
 
-[`JOIN` vs N=1](https://i.imgur.com/zZYdaau.png?raw=true)
+## What does our data look like?
+
+###
+
+We have an sqllite3 DB with sequalize for our ORM. It's 2 simple tables as seen below, one with SolarSystems that has a one-to-many relationship with Planets
+
+### SolarSystems
+
+#### Has many planets
+
+> SELECT \* FROM `SolarSystems`
+
+| #   | id  | name      |
+| --- | :-- | :-------- |
+| 1   | 1   | Intuitive |
+| 3   | 3   | Core      |
+
+### Planets
+
+> SELECT \* FROM `Planets`
+
+| #   | id  | name           | solarSystemId |
+| --- | :-- | :------------- | ------------- |
+| 1   | 1   | Cambridgeshire | 1             |
+| 6   | 6   | Functionality  | 3             |
 
 ## Approaches:
 
 ### Laissez-faire:
 
 > With this approach, we don't concern ourselves with much. We are getting back the data that we requested and we aren't asking any more questions about it. In the short run, with small data sets and few users, this approach will likely be adequate and no result in too much pain. We should look to be more thoughtful for any production application.
+
+[`JOIN` vs N+1](https://i.imgur.com/zZYdaau.png?raw=true)
 
 ### JOINs:
 
