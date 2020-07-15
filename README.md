@@ -4,11 +4,20 @@
 
 tl;dr: The N+1 problem occurs when the server executes more round trips to the datastore for related or nested data than necessary resulting in inefficiencies and longer load times.
 
+## About Me
+
+- Senior Frontend Software Engineer at Seaspan Corp
+- Denver, CO
+- Love travel, tennis, and being efficient
+- mhooper72.com
+
+## Lets look at an example
+
 ## What does our data look like?
 
 ###
 
-We have an sqllite3 DB with sequalize for our ORM. It's 2 simple tables as seen below, one with SolarSystems that has a one-to-many relationship with Planets
+We have an sqlite3 DB with sequalize for our ORM. It's 2 simple tables as seen below, one with SolarSystems that has a one-to-many relationship with Planets
 
 ### SolarSystems
 
