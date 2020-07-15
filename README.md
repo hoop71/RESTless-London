@@ -11,9 +11,7 @@ tl;dr: The N+1 problem occurs when the server executes more round trips to the d
 - Love travel, tennis, and being efficient
 - mhooper72.com
 
-## Lets look at an example
-
-## What does our data look like?
+## Lets look at an example and see our data model?
 
 ###
 
