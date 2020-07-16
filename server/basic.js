@@ -28,6 +28,7 @@ const resolvers = {
       await models.SolarSystems.findAll({ limit: 10 })
   },
   SolarSystem: {
+    // console.log(parent)
     planets: async (parent, args, { models }) => {
       return await models.Planets.findAll({ where: { solarSystemId: parent.id } })
     }

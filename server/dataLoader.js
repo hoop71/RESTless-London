@@ -45,7 +45,7 @@ const server = new ApolloServer({
   context: () => {
     return {
       planetsLoader: new DataLoader(async (keys) => {
-        // Load all planets that has a cooresponding solarSystemId
+        // Recieve batched array of keys and load all planets that have a corresponding solarSystemId
         const planets = await models.Planets.findAll({ where: { solarSystemId: keys } })
 
         // Create a map to ogranize them by solarSystemId
